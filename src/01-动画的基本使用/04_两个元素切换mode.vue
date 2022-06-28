@@ -2,7 +2,8 @@
   <div class="app">
     <div><button @click="isShow = !isShow">显示/隐藏</button></div>
 
-    <transition name="why" mode="out-in">
+    <!-- :apper="true"这里不用:的话，是字符串，true/false会被当成字符串，当然字符串也是true -->
+    <transition name="why" mode="out-in" :appear="true">
       <h2 class="title" v-if="isShow">Hello World</h2>
       <h2 class="title" v-else>你好啊,李银河</h2>
     </transition>
@@ -10,54 +11,54 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        isShow: true
-      }
-    }
-  }
+export default {
+  data() {
+    return {
+      isShow: true,
+    };
+  },
+};
 </script>
 
 <style scoped>
-  .app {
-    width: 200px;
-    margin: 0 auto;
+.app {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.title {
+  display: inline-block;
+}
+
+.why-enter-from,
+.why-leave-to {
+  opacity: 0;
+}
+
+.why-enter-active,
+.why-leave-active {
+  transition: opacity 1s ease;
+}
+
+.why-enter-active {
+  animation: bounce 1s ease;
+}
+
+.why-leave-active {
+  animation: bounce 1s ease reverse;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(0);
   }
 
-  .title {
-    display: inline-block;
+  50% {
+    transform: scale(1.2);
   }
 
-  .why-enter-from,
-  .why-leave-to {
-    opacity: 0;
+  100% {
+    transform: scale(1);
   }
-
-  .why-enter-active,
-  .why-leave-active {
-    transition: opacity 1s ease;
-  }
-
-  .why-enter-active {
-    animation: bounce 1s ease;
-  }
-
-  .why-leave-active {
-    animation: bounce 1s ease reverse;
-  }
-
-  @keyframes bounce {
-    0% {
-      transform: scale(0)
-    }
-
-    50% {
-      transform: scale(1.2);
-    }
-
-    100% {
-      transform: scale(1);
-    }
-  }
+}
 </style>

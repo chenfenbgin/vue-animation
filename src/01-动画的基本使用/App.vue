@@ -6,6 +6,7 @@
     <!-- <h2 v-if="isShow">hello world</h2> -->
 
     <!-- 单元素或者组件实现过渡动画，可以使用transition内置组件来实现 -->
+    <!-- 这里只要把样式name=chen,这么写就行，然后到style里面编写 -->
     <transition name="chen">
       <h2 class="title" v-if="isShow">hello world</h2>
     </transition>
@@ -29,6 +30,7 @@ export default {
 .title {
   display: inline-block;
 }
+/* 过渡动画的使用 */
 /* .chen-enter-from,
 .chen-leave-to { */
 /* 从透明度0开始进入 */
@@ -36,26 +38,29 @@ export default {
 } */
 
 /* 这一部分其实是可以不写的，浏览器默认会给h2设置一个默认值1 */
-/* .chen-leave-to,
-.chen-enter-from {
+/* .chen-leave-from,
+.chen-enter-to {
   opacity: 1;
 } */
 
-/* .chen-enter-active, */
-/* .chen-leave-active { */
-/* transition是设置具体过渡的属性, 后面跟的是哪个属性进行过渡 */
+/* .chen-enter-active,
+.chen-leave-active { */
+/* transition是设置具体过渡的属性, 后面跟的是对哪个属性进行过渡， ease:动画进入的方式 */
 /* transition: opacity 2s ease;
 } */
 
+/* animation: 动画的名字 时间 动画执行的速率*/
 .chen-enter-active {
   animation: bounce 1s ease;
 }
 
+/* reverse：动画反转 */
 .chen-leave-active {
   animation: bounce 1s ease reverse;
 }
 
 /* 定义每一帧，每一帧要达到什么样的效果 */
+/* @keyframes: 帧动画 + 名字 */
 @keyframes bounce {
   0% {
     /* 定义缩放程度 */
